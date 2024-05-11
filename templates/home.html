@@ -19,12 +19,19 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="{% url 'settings' %}">Settings</a>
               </li>
+
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="{% url 'create_product' %}">Create Salad</a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'orders' %}">Orders</a>
+              </li>
+
               {% if request.user.is_authenticated %}
               <li class="nav-item">
                   <a class="nav-link" href="{% url 'signout' %}">Sign out</a>
@@ -34,6 +41,7 @@
                   <a class="nav-link" href="{% url 'signin' %}">Sign in </a>
               </li>
               {% endif %}
+
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -42,8 +50,55 @@
           </div>
         </div>
       </nav>
-    <p>Home Page</p>
 
+    <!-- Dummy Products Card -->
+    <div class="container">
+      <div class="row">
+        <form method="post" action="{% url 'transaction' %}" class="row g-3">
+              {% csrf_token %}
+              {% for product in products %}
+              <div class="col-md-4 mb-4">
+                  <div class="card">
+                      <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ product.name }}</h5>
+                          <p class="card-text">{{ product.description }}</p>
+                          <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
+                          <!-- Quantity Selector -->
+                          <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                  <button class="btn btn-outline-secondary" type="button" onclick="decrementQuantity('{{ product.id }}')">-</button>
+                              </div>
+                              <input type="text" class="form-control" name="quantity_{{ product.id }}" value="0" readonly>
+                              <div class="input-group-append">
+                                  <button class="btn btn-outline-secondary" type="button" onclick="incrementQuantity('{{ product.id }}')">+</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+              <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-primary">Buy Selected Products</button>
+              </div>
+          </form>
+      </div>
+  </div>
+  <script>
+    function incrementQuantity(productId) {
+        let quantityInput = document.getElementsByName('quantity_' + productId)[0];
+        let currentQuantity = parseInt(quantityInput.value);
+        quantityInput.value = currentQuantity + 1;
+    }
+
+    function decrementQuantity(productId) {
+        let quantityInput = document.getElementsByName('quantity_' + productId)[0];
+        let currentQuantity = parseInt(quantityInput.value);
+        if (currentQuantity > 0) {
+            quantityInput.value = currentQuantity - 1;
+        }
+    }
+</script>
 
 </body>
 </html>

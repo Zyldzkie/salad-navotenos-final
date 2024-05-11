@@ -23,7 +23,6 @@ class Order(models.Model):
     products = models.ManyToManyField(Product, related_name='orders', through='OrderItem')
     STATUS_CHOICES = (
         ('Pending', 'Pending'),
-        ('Processing', 'Processing'),
         ('Shipped', 'Shipped'),
         ('Delivered', 'Delivered'),
         ('Cancelled', 'Cancelled'),

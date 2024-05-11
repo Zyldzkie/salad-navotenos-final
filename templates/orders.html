@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="mt-5 mb-4">My Orders</h1>
+
+    {% for status, orders in orders_by_status.items %}
+        <h2>{{ status }}</h2>
+        {% if orders %}
+            {% for order in orders %}
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Order #{{ order.id }}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for order_item in order.orderitem_set.all %}
+                            <li class="list-group-item">
+                                {{ order_item.quantity }} x {{ order_item.product.name }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="card-footer">
+                        Status: {{ order.status }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No {{ status }} orders found.</p>
+        {% endif %}
+    {% empty %}
+        <p>No orders found.</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>
