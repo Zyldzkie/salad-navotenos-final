@@ -2,7 +2,6 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class MyUser(AbstractUser):
-    profile_image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
     contact_number = models.CharField(max_length=20, blank=True)
 
     def __str__(self):

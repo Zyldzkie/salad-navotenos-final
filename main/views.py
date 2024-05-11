@@ -32,6 +32,7 @@ def signup(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        contact_number = request.POST.get('contact_number')
         confirm_password = request.POST.get('confirm_password')
 
         if not username or not password or not confirm_password:
@@ -48,8 +49,8 @@ def signup(request):
             messages.error(request, 'Username already exists. Please choose a different one.')
             return redirect('signup')
 
-        # Create new user
-        user = MyUser.objects.create_user(username=username, password=password)
+        # Create new user with contact number
+        user = MyUser.objects.create_user(username=username, password=password, contact_number=contact_number)
         login(request, user)
         return redirect('home') 
 
@@ -59,9 +60,6 @@ def signup(request):
 def signout(request):
     logout(request)
     return redirect('home')
-
-def settings(request):
-    return render(request, 'account_settings.html')
 
 
 from django.shortcuts import render, redirect
