@@ -121,33 +121,47 @@ def transaction(request):
 
         return render(request, 'transaction.html', {'selected_products': selected_products, 'subtotal': subtotal, 'shipping_fee': shipping_fee, 'total': total})
 
-    shipping_address = request.user.shipping_address
-    return render(request, 'transaction.html', {'shipping_address': shipping_address})
-
+    return render(request, 'transaction.html')
 
 
 
 @login_required
 def finalize_order(request):
-    selected_products = request.session.get('selected_products', {})
-    if not selected_products:
-        messages.error(request, "No products selected for order.")
-        return redirect('transaction')
-    
-    user = request.user
-    order = Order.objects.create(user=user, status='Pending', shipping_fee=0, total_price=0, shipping_address='')
-    
-    total_price = 0
-    for product_id, product_data in selected_products.items():
-        product = Product.objects.get(pk=product_id)
-        quantity = product_data['quantity']  # Access the quantity from the product_data dictionary
-        order_item = OrderItem.objects.create(order=order, product=product, quantity=quantity)
-        total_price += product.price * quantity
+    if request.method == 'POST':
+        shipping_address = request.POST.get('shipping_address')
+        print(shipping_address)
+        if not shipping_address:
+            messages.error(request, "Shipping address is required.")
+            return redirect('transaction')
 
-    order.total_price = total_price
-    order.save()
-    
-    del request.session['selected_products']
-    
-    return redirect('home')
+        request.session['shipping_address'] = shipping_address
+        messages.success(request, "Shipping address saved successfully.")
+
+        selected_products = request.session.get('selected_products', {})
+        if not selected_products:
+            messages.error(request, "No products selected for order.")
+            return redirect('transaction')
+
+        user = request.user
+
+        order = Order.objects.create(user=user, status='Pending', shipping_fee=48, total_price=0, shipping_address=shipping_address)
+
+        total_price = 0
+        for product_id, product_data in selected_products.items():
+            product = Product.objects.get(pk=product_id)
+            order_item = OrderItem.objects.create(order=order, product=product, quantity=product_data['quantity'])
+            total_price += product_data['subtotal']
+
+        order.total_price = total_price
+        order.save()
+
+        del request.session['selected_products']
+        del request.session['shipping_address']
+
+        messages.success(request, "Order finalized successfully.")
+        return redirect('home')
+
+    return render(request, 'finalize_order.html')
+
+
 

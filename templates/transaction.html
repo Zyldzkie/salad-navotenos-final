@@ -38,14 +38,22 @@
                     <div class="card-body">
                         <p class="card-text">Subtotal: ${{ subtotal }}</p>
                         <p class="card-text">Shipping Fee: ${{ shipping_fee }}</p>
-                        <hr>
-                        <h5 class="card-title">Total: ${{ total }}</h5>
                     </div>
                 </div>
-                <form method="post" action="{% url 'finalize_order' %}">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">Finalize Order</button>
-                </form>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title">Shipping Address</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="{% url 'finalize_order' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <textarea class="form-control" id="shippingAddress" name="shipping_address" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Finalize Order</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
