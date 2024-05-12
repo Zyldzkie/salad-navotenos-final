@@ -19,10 +19,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+              
+              {% if request.user.is_staff %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'create_product' %}">Create Salad</a>
               </li>
+              {% endif %}
 
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'orders' %}">Orders</a>
@@ -46,6 +48,18 @@
           </div>
         </div>
       </nav>
+
+    <!-- for success messages -->
+    {% if messages %}
+      {% for message in messages %}
+          {% if message.tags == 'success' %}
+              <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+              </div>
+          {% endif %}
+      {% endfor %}
+    {% endif %}
+
 
     <!-- Dummy Products Card -->
     <div class="container">

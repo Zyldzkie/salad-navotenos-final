@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from . models import Product, Order, OrderItem, MyUser
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 def home(request):
     products = Product.objects.all()
@@ -71,6 +72,7 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ['name', 'price', 'image', 'description']
 
+@staff_member_required
 def create_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -97,6 +99,14 @@ def orders(request):
 
 @login_required
 def transaction(request):
+    selected_products = request.session.get('selected_products', {})
+    subtotal = 0
+    for product_id, product_data in selected_products.items():
+        subtotal += product_data['subtotal']
+
+    shipping_fee = 48
+    total = subtotal + shipping_fee
+
     if request.method == 'POST':
         selected_products = {}
         subtotal = 0
@@ -112,14 +122,10 @@ def transaction(request):
                 subtotal += selected_products[product.id]['subtotal']
 
         shipping_fee = 48
-
         total = subtotal + shipping_fee
-
         request.session['selected_products'] = selected_products
 
-        return render(request, 'transaction.html', {'selected_products': selected_products, 'subtotal': subtotal, 'shipping_fee': shipping_fee, 'total': total})
-
-    return render(request, 'transaction.html')
+    return render(request, 'transaction.html', {'selected_products': selected_products, 'subtotal': subtotal, 'shipping_fee': shipping_fee, 'total': total})
 
 
 

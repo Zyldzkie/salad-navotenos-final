@@ -9,6 +9,24 @@
     <script src="{% static 'js/bootstrap.js' %}"></script>
 </head>
 <body>
+
+
+    <!-- for error messages -->
+    {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger">
+            {{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+            </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+  
+
     <div class="container">
         <h1>Transaction Details</h1>
         <div class="row">
@@ -52,7 +70,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Finalize Order</button>
                         </form>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
