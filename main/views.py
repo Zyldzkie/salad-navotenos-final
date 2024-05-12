@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from . models import Product, Order, OrderItem, MyUser
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 def home(request):
     products = Product.objects.all()
@@ -71,6 +72,7 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ['name', 'price', 'image', 'description']
 
+@staff_member_required
 def create_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -138,7 +140,7 @@ def finalize_order(request):
         selected_products = request.session.get('selected_products', {})
         if not selected_products:
             messages.error(request, "No products selected for order.")
-            return redirect('transaction')
+            return render(redirect, 'transaction')
 
         user = request.user
 
