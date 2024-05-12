@@ -99,6 +99,14 @@ def orders(request):
 
 @login_required
 def transaction(request):
+    selected_products = request.session.get('selected_products', {})
+    subtotal = 0
+    for product_id, product_data in selected_products.items():
+        subtotal += product_data['subtotal']
+
+    shipping_fee = 48
+    total = subtotal + shipping_fee
+
     if request.method == 'POST':
         selected_products = {}
         subtotal = 0
@@ -114,14 +122,10 @@ def transaction(request):
                 subtotal += selected_products[product.id]['subtotal']
 
         shipping_fee = 48
-
         total = subtotal + shipping_fee
-
         request.session['selected_products'] = selected_products
 
-        return render(request, 'transaction.html', {'selected_products': selected_products, 'subtotal': subtotal, 'shipping_fee': shipping_fee, 'total': total})
-
-    return render(request, 'transaction.html')
+    return render(request, 'transaction.html', {'selected_products': selected_products, 'subtotal': subtotal, 'shipping_fee': shipping_fee, 'total': total})
 
 
 
@@ -140,7 +144,7 @@ def finalize_order(request):
         selected_products = request.session.get('selected_products', {})
         if not selected_products:
             messages.error(request, "No products selected for order.")
-            return render(redirect, 'transaction')
+            return redirect('transaction')
 
         user = request.user
 

@@ -19,10 +19,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+              
+              {% if request.user.is_staff %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'create_product' %}">Create Salad</a>
               </li>
+              {% endif %}
 
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'orders' %}">Orders</a>
