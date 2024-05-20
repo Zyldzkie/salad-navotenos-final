@@ -10,6 +10,10 @@ def home(request):
     products = Product.objects.all()
     return render(request, 'home.html', {'products': products})
 
+def shop(request):
+    products = Product.objects.all()
+    return render(request, 'shop.html', {'products': products})
+
 
 def signin(request):
     if request.method == 'POST':
@@ -127,6 +131,22 @@ def transaction(request):
 
     return render(request, 'transaction.html', {'selected_products': selected_products, 'subtotal': subtotal, 'shipping_fee': shipping_fee, 'total': total})
 
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'price',  'category', 'image', 'description']
+
+@staff_member_required
+def create_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Salad Product created successfully.') 
+            return redirect('create_product')  
+    else:
+        form = ProductForm()
+    return render(request, 'create_product.html', {'form': form})
 
 
 @login_required
@@ -175,6 +195,6 @@ def about(request):
 def developers(request):
     return render(request, 'developers.html')
 
-def shop(request):
-    return render(request, 'shop.html')
+# def shop(request):
+#     return render(request, 'shop.html')
 

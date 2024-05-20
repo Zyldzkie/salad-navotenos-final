@@ -12,6 +12,16 @@ class Product(models.Model):
     price = models.FloatField()
     image = models.ImageField(upload_to='product_images/', blank=True, null=True)
     description = models.TextField()
+    
+    
+    CATEGORY_CHOICES = (
+        ('Salad', 'Salad'),
+        ('Chips', 'Chips'),
+        ('Drinks', 'Drinks'),
+        ('Merchandise', 'Merchandise'),
+    )
+
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
 
     def __str__(self):
         return self.name
@@ -42,3 +52,4 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name} in Order #{self.order.id}"
+
