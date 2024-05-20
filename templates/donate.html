@@ -1,0 +1,177 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <title>
+            SAlAD Navoteños
+        </title>
+
+        <link rel="stylesheet" href="css/navbar-styles.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/donate.css">
+        <link rel="icon" type="image/x-icon" href="/media/product_images/salad-logo.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <script src="https://kit.fontawesome.com/d84bfa7905.js" crossorigin="anonymous"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+            @font-face {
+    font-family: 'Formula';
+    src: url('/static/css/FormulaCondensed-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Formula-light';
+    src: url('/static/css/FormulaCondensed-Light.otf') format('opentype');
+}
+  
+div {
+    font-family: 'Formula';
+}
+body{
+    font-family: 'Formula', sans-serif;
+    overflow-x: hidden;
+    background-image: url(/media/product_images/salad-background.png);
+}
+
+.section-1 {
+    margin: 20px 70px;
+}
+
+.title-text {
+    color: #FCA501;
+    font-family: 'Poppins';
+    font-size: 100px;
+    font-weight: 900;
+    margin: 0;
+    text-shadow: 2px 1px 3px #000;
+}
+
+.span-donate {
+    color: green;
+}
+
+.bata {
+    width: 100%;
+    height: auto;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* RIGHT */
+
+.title-right {
+    color: green;
+    font-family: 'Poppins';
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+    margin: 0;
+}
+
+.text-sub {
+    color: black;
+    font-family: 'Poppins';
+    font-size: 25px;
+    font-weight: 400;
+    text-align: justify;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+.gcash {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.qr-img {
+    width: 200px;
+    height: 200px;
+    border: 3px solid green;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gcash-text {
+    text-align: center;
+    color: black;
+    font-family: 'Poppins';
+    font-size: 25px;
+    font-weight: 400;
+    margin: 0;
+}
+        </style>
+    </head>
+
+    <body>
+       <!--NavBar-->
+{% include 'navbar.html' %}
+
+
+        <main class="container-fluid p-0">
+
+            <div class="section-1">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="title-text" style="font-family: 'Formula';">SUPPORT OUR CAUSE! <span class="span-donate">DONATE NOW!</span></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img class="bata" src="/media/product_images/bata.png" alt="PIC">
+                        <p class="title-right" style="font-family: 'Formula';">YOU CAN MAKE A DIFFERENCE NOW!</p>
+                        <p class="text-sub" style="font-family: 'Formula';">SALAD Navoteños is a fundraising project dedicated to providing aid and assistance to Navoteno families in need and the marginalized sector. <br><br>
+
+
+                            As a scout-led initiative, we are committed to amplifying our impact within the community. Your generous donations will help us continue our mission to bring fresh, healthy meals to those who need it most.</p>
+                    </div>
+                    <div class="col">
+                        <p class="title-right" style="font-family: 'Formula';">WE ACCEPT IN-KIND DONATIONS</p>
+                        <iframe style="box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5); margin-bottom: 20px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d811.4153891916701!2d120.93863519192051!3d14.669340628347014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b4f774713445%3A0x521da91a05a556e1!2sSan%20Roque%20National%20High%20School!5e0!3m2!1sen!2sph!4v1715472492649!5m2!1sen!2sph" width="100%" height="280"></iframe>
+                        <p class="text-sub" style="font-family: 'Formula';">Drop off at Lamberto B. Linaban Sr. Scouting Center, San Roque ES Compund, Brgy. San Roque, Navotas City</p>
+                        <p class="title-right" style="font-family: 'Formula';">WE ACCEPT MONETARY DONATIONS</p>
+                        <div class="gcash">
+                            <img class="qr-img" src="/media/product_images/clark.jpg" alt="GCASH QR CODE">
+                            <p class="gcash-text" style="font-family: 'Formula';">GCASH<br>
+                                +63 999 429 7534<br>
+                                Andrew R.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </main>
+
+        <section class="contact-area" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <div class="contact-content text-center">
+                            <a href="index.html"><img src="/media/product_images/Logo-with-text-edited.png" alt="logo"></a>
+                            <p>A scout-led fundraising project and business in support of Navoteño families.</p>
+                            <div class="hr"></div>
+                            <h6>Brgy. San Roque, Navotas City, 1485</h6>
+                            <h6>+63 999 429 7534<span></h6>
+                            <div class="contact-social">
+                                <ul>
+                                    <li><a class="hover-target" href="https://www.facebook.com/SALAD.Navotenos"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a class="hover-target" href="https://www.facebook.com/SALAD.Navotenos"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a class="hover-target" href="https://www.facebook.com/SALAD.Navotenos"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a class="hover-target" href="https://www.facebook.com/SALAD.Navotenos"><i class="fab fa-youtube"></i></a></li>
+                                    <li><a class="hover-target" href="https://www.facebook.com/SALAD.Navotenos"><i class="fab fa-google"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>SALAD Navoteños &copy; 2024 <img src="/media/product_images/salad-logo.png" alt="logo"> All Rights Reserved.</p>
+        </footer>
+    </body>
+
+</html>

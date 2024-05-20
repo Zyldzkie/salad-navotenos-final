@@ -178,8 +178,8 @@ footer img {
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'about' %}">About Us</a></li>
-                            <li><a class="dropdown-item" href="/templates/team.html">Team</a></li>
-                            <li><a class="dropdown-item" href="contacts.html">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="{% url 'team' %}">Team</a></li>
+                            <li><a class="dropdown-item" href="{% url 'contacts' %}">Contact Us</a></li>
                             <li><a class="dropdown-item" href="{% url 'developers' %}">Developers</a></li>
                         </ul>
                     </li>
@@ -196,9 +196,7 @@ footer img {
                         </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="news.html">News</a>
-                    </li>
+                   
 
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a>
