@@ -13,32 +13,64 @@
 <div class="container">
     <h1 class="mt-5 mb-4">My Orders</h1>
 
-    {% for status, orders in orders_by_status.items %}
-        <h2>{{ status }}</h2>
-        {% if orders %}
-            {% for order in orders %}
-                <div class="card mb-4">
-                    <div class="card-header">
-                        Order #{{ order.id }}
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        {% for order_item in order.orderitem_set.all %}
-                            <li class="list-group-item">
-                                {{ order_item.quantity }} x {{ order_item.product.name }}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                    <div class="card-footer">
-                        Status: {{ order.status }}
-                    </div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>No {{ status }} orders found.</p>
-        {% endif %}
-    {% empty %}
-        <p>No orders found.</p>
-    {% endfor %}
+    <div class="row">
+        <div class="col-12">
+            <!-- Posts Container -->
+            <div id="postsDisplay"></div>
+            <button onclick="pay()">PAY</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPosts();
+        });
+
+        function loadPosts() {
+            var postsDisplay = document.getElementById('postsDisplay');
+            postsDisplay.innerHTML = ''; // Clear previous content
+
+            var posts = [];
+
+            for (var key in localStorage) {
+                if (localStorage.hasOwnProperty(key) && !key.startsWith('post_')) {
+                    var post = JSON.parse(localStorage.getItem(key));
+                    posts.push(post);
+                }
+            }
+
+            // Sort posts by timestamp in descending order
+            posts.sort(function(a, b) {
+                return b.timestamp - a.timestamp;
+            });
+
+            // Display sorted posts
+            posts.forEach(function(post) {
+                var postDiv = document.createElement('div');
+                var nameH1 = document.createElement('h1');
+                var messageH3 = document.createElement('h3');
+                var quantityP = document.createElement('p');
+
+                nameH1.innerText = post.name;
+                messageH3.innerText = post.message;
+                quantityP.innerText = 'Quantity: ' + post.quantity;
+
+                postDiv.appendChild(nameH1);
+                postDiv.appendChild(messageH3);
+                postDiv.appendChild(quantityP);
+
+                postsDisplay.appendChild(postDiv);
+            });
+        }
+
+        function pay (){
+            if (confirm('Are you sure you want to buy this all Items ?')) {
+                localStorage.clear();
+                alert('Thankyou for purchasing with us');
+                window.location.href = "{% url 'shop' %}";
+            }
+        }
+    </script>
 </div>
 
 </body>

@@ -1155,7 +1155,7 @@ ul{
                                 <h4> PHP{{ product.price }}</h4>
                                 <form method="post" action="{% url 'transaction' %}">
                                         {% csrf_token %}
-                                    <button type="submit" class="purchase-btn">ADD TO CART</button>
+                                    <button type="button" class="purchase-btn" onclick="savePost('{{ product.name }}', '{{ product.price }}')">ADD TO CART</button>
                                 </form>
                             </div>
                         </div>
@@ -1394,6 +1394,39 @@ ul{
     <footer>
         <p>SALAD Navoteños &copy; 2024 <img src="/media/product_images/salad-logo.png" alt="logo"> All Rights Reserved.</p>
     </footer>
+
+    <script>
+        function savePost(name, message) {
+            if (!name || !message) {
+                alert('Please enter both name and message');
+                return;
+            }
+
+            // Check if a post with the same name already exists
+            var existingPost = localStorage.getItem(name);
+            if (existingPost) {
+                // If it exists, parse it and increment the quantity
+                existingPost = JSON.parse(existingPost);
+                existingPost.quantity += 1;
+            } else {
+                // If it doesn't exist, create a new post with quantity 1
+                existingPost = {
+                    name: name,
+                    message: message,
+                    quantity: 1,
+                    timestamp: new Date().getTime()
+                };
+            }
+
+            // Save the updated post back to localStorage
+            localStorage.setItem(name, JSON.stringify(existingPost));
+
+            alert('Post saved successfully: ' + name + ' - ' + message + ' (Quantity: ' + existingPost.quantity + ')');
+
+        }
+    </script>
+
+    
 
 </body>
 
