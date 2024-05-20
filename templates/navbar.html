@@ -180,16 +180,16 @@ footer img {
                             <li><a class="dropdown-item" href="{% url 'about' %}">About Us</a></li>
                             <li><a class="dropdown-item" href="/templates/team.html">Team</a></li>
                             <li><a class="dropdown-item" href="contacts.html">Contact Us</a></li>
-                            <li><a class="dropdown-item" href="/templates/developers.html">Developers</a></li>
+                            <li><a class="dropdown-item" href="{% url 'developers' %}">Developers</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="shop.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="{% url 'shop' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Shop
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Salads</a></li>
+                            <li><a class="dropdown-item" href="{% url 'shop' %}">Salads</a></li>
                             <li><a class="dropdown-item" href="#">Chips</a></li>
                             <li><a class="dropdown-item" href="#">Beverages</a></li>
                             <li><a class="dropdown-item" href="#">Merchandise</a></li>
