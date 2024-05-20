@@ -167,5 +167,8 @@ def finalize_order(request):
 
     return render(request, 'finalize_order.html')
 
+from django.shortcuts import render
 
+def about(request):
+    return render(request, '../templates/about.html')
 

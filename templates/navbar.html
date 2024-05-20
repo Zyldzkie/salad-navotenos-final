@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>SALAD Navoteños</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="../static/css/navbar-styles.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    
+    <script src="https://kit.fontawesome.com/d84bfa7905.js" crossorigin="anonymous"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="../images/salad-logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-menu .dropdown-item {
+    color: white;
+    font-size: 18px;
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar-nav .dropdown-menu {
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+    color: black; 
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+    color: #F6AA1C; 
+}
+
+.navbar-toggler-icon {
+    color: white; 
+    border: none; 
+}
+
+.navbar-nav {
+    padding: 5px;
+}
+
+.navbar-brand:hover {
+    opacity: 0.8; 
+}
+
+/* Adjust alignment of navbar items */
+@media (min-width: 768px) {
+    .navbar-nav {
+        margin-left: auto; /* Move navbar items to the right */
+    }
+}
+
+section img {
+    max-width: 100%;
+    height: auto;
+}
+section {
+    padding: 60px 0;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.contact-area {
+    border-bottom: 1px solid #fff;
+}
+
+.contact-content p {
+    font-size: 15px;
+    margin: 30px 0 60px;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-content p::after {
+    background: #fff;
+    bottom: -30px;
+    content: "";
+    height: 1px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    width: 80%;
+}
+
+.contact-content h6 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-content span {
+    color: #fff;
+    margin: 0 10px;
+}
+
+.contact-social {
+    margin-top: 30px;
+}
+
+.contact-social > ul {
+    display: inline-flex;
+}
+
+.contact-social ul li a {
+    border: 1px solid #fff;
+    color: #fff;
+    display: inline-block;
+    height: 40px;
+    margin: 0 10px;
+    padding-top: 7px;
+    transition: all 0.4s ease 0s;
+    width: 40px;
+}
+
+.contact-social ul li a:hover {
+    border: 1px solid #F6AA1C;
+    color: #FAB702;
+}
+
+.contact-content img {
+    max-width: 210px;
+    font-family: 'Poppins', sans-serif;
+}
+
+section, footer {
+    background: green;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+footer p {
+    padding: 40px 0;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+footer img {
+    width: 44px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+    </style>
+</head>
+<body>
+<!--NavBar-->
+    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: green;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="../media/product_images/Logo-with-text-edited.png" class="d-inline-block align-top" width="100%" height="50"  alt="">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="about.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'about' %}">About Us</a></li>
+                            <li><a class="dropdown-item" href="/templates/team.html">Team</a></li>
+                            <li><a class="dropdown-item" href="contacts.html">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="/templates/developers.html">Developers</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="shop.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Salads</a></li>
+                            <li><a class="dropdown-item" href="#">Chips</a></li>
+                            <li><a class="dropdown-item" href="#">Beverages</a></li>
+                            <li><a class="dropdown-item" href="#">Merchandise</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="news.html">News</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>
