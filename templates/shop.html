@@ -1138,88 +1138,30 @@ ul{
             <h2 class="text-center"><span class="yellow-text">DISCOVER OUR SPECIALTIES</span></h2>
         </div>
     
-        <div class="row justify-content-center salads">
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                    <div class="image-container">
-                        <img src="/media/product_images/simple.png" class="card-img">
-                        <ul class="ingredient-list">
-                            <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
-                            <li>Regular Lettuce</li>
-                            <li>Onions</li>
-                            <li>Cucumber</li>
-                            <li>Carrots</li>
-                            <li>Egg</li>
-                            <li>Mayonnaise</li>
-                        </ul>
+        <div class="row salads">
+            {% for product in products %}
+                {% if product.category == "Salad" %}
+                    <div class="col-sm-12 col-md-6 col-lg-3 products-col1">
+                        <div class="card" style="border: 2px solid green;">
+                            <div class="image-container">
+                                <img src="{{ product.image.url }}" class="card-img">
+                                <ul class="ingredient-list">
+                                    <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
+                                    <li><pre>{{ product.description }}</pre></li>
+                                </ul>
+                            </div>
+                            <div class="product-body">
+                                <h1>{{ product.name }}</h1>
+                                <h4> PHP{{ product.price }}</h4>
+                                <form method="post" action="{% url 'transaction' %}">
+                                        {% csrf_token %}
+                                    <button type="submit" class="purchase-btn">ADD TO CART</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-body">
-                        <h1>SIMPLE LETTUCE SALAD</h1>
-                        <h4>PHP 100.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                    <div class="image-container">
-                        <img src="/media/product_images/insalata.png" class="card-img">
-                        <ul class="ingredient-list">
-                            <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
-                            <li>Regular Lettuce</li>
-                            <li>Cucumber</li>
-                            <li>Carrots</li>
-                            <li>Corn</li>
-                            <li>Thousand Island Dressing</li>
-                        </ul>
-                    </div>
-                    <div class="product-body">
-                        <h1>INSALATA MISTA SALAD</h1>
-                        <h4>PHP 100.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                    <div class="image-container">
-                        <img src="/media/product_images/kani.png" class="card-img">
-                        <ul class="ingredient-list">
-                            <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
-                            <li>Regular Lettuce</li>
-                            <li>Cucumber</li>
-                            <li>Carrots</li>
-                            <li>Mango</li>
-                            <li>Crab Sticks</li>
-                            <li>Peanut Sauce</li>
-                        </ul>
-                    </div>
-                    <div class="product-body">
-                        <h1>KANI SALAD</h1>
-                        <h4>PHP 100.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                    <div class="image-container">
-                        <img src="/media/product_images/caesar.png" class="card-img">
-                        <ul class="ingredient-list">
-                            <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
-                            <li>Romaine Lettuce</li>
-                            <li>Parmesan Cheese</li>
-                            <li>Croutons</li>
-                            <li>Caesar Dressing</li>
-                        </ul>
-                    </div>
-                    <div class="product-body">
-                        <h1>CAESAR SALAD</h1>
-                        <h4>PHP 100.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 
@@ -1324,37 +1266,30 @@ ul{
         </div>
 
         <div class="row feedback">
-            <div class="col-lg-4 col-md-6 col-sm-12 fd">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/original.png" class="card-img1">
-                    <div class="product-body">
-                        <h1>ORIGINAL LETTUCE CHIPS</h1>
-                        <h4>PHP 100.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-12 fd">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/cheesy.png" class="card-img1">
-                    <div class="product-body">
-                        <h1>CHEESY LETTUCE CHIPS</h1>
-                        <h4>PHP 100.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-12 fd">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/spicy.png" class="card-img1">
-                    <div class="product-body">
-                        <h1>SPICY LETTUCE CHIPS</h1>
-                        <h4>PHP 100.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
+            <div class="row salads">
+                {% for product in products %}
+                    {% if product.category == "Chips" %}
+                        <div class="col-sm-12 col-md-6 col-lg-4 products-col1">
+                            <div class="card" style="border: 2px solid green;">
+                                <div class="image-container">
+                                    <img src="{{ product.image.url }}" class="card-img">
+                                    <ul class="ingredient-list">
+                                        <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
+                                        <li><pre>{{ product.description }}</pre></li>
+                                    </ul>
+                                </div>
+                                <div class="product-body">
+                                    <h1>{{ product.name }}</h1>
+                                    <h4> PHP{{ product.price }}</h4>
+                                    <form method="post" action="{% url 'transaction' %}">
+                                            {% csrf_token %}
+                                        <button type="submit" class="purchase-btn">ADD TO CART</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -1366,49 +1301,29 @@ ul{
         </div>
 
         <div class="row feedback">
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/mangoo.png" class="card-img2">
-                    <div class="product-body">
-                        <h1>FRESH MANGO SHAKE</h1>
-                        <h4>PHP 49.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
+            {% for product in products %}
+                {% if product.category == "Drinks" %}
+                    <div class="col-sm-12 col-md-6 col-lg-3 products-col1">
+                        <div class="card" style="border: 2px solid green;">
+                            <div class="image-container">
+                                <img src="{{ product.image.url }}" class="card-img">
+                                <ul class="ingredient-list">
+                                    <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
+                                    <li><pre>{{ product.description }}</pre></li>
+                                </ul>
+                            </div>
+                            <div class="product-body">
+                                <h1>{{ product.name }}</h1>
+                                <h4> PHP{{ product.price }}</h4>
+                                <form method="post" action="{% url 'transaction' %}">
+                                        {% csrf_token %}
+                                    <button type="submit" class="purchase-btn">ADD TO CART</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/strawberry.png" class="card-img2">
-                    <div class="product-body">
-                        <h1>FRESH STRAWBERRY SHAKE</h1>
-                        <h4>PHP 49.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/kiwi.png" class="card-img2">
-                    <div class="product-body">
-                        <h1>FRESH KIWI SHAKE</h1>
-                        <h4>PHP 49.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/banana.png" class="card-img2">
-                    <div class="product-body">
-                        <h1>FRESH BANANA SHAKE</h1>
-                        <h4>PHP 49.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 
@@ -1420,49 +1335,29 @@ ul{
         </div>
 
         <div class="row feedback">
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/patch.png" class="card-img2">
-                    <div class="product-body">
-                        <h1>SALAD PATCH</h1>
-                        <h4>PHP 100.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
+            {% for product in products %}
+                {% if product.category == "Merchandise" %}
+                    <div class="col-sm-12 col-md-6 col-lg-3 products-col1">
+                        <div class="card" style="border: 2px solid green;">
+                            <div class="image-container">
+                                <img src="{{ product.image.url }}" class="card-img">
+                                <ul class="ingredient-list">
+                                    <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
+                                    <li><pre>{{ product.description }}</pre></li>
+                                </ul>
+                            </div>
+                            <div class="product-body">
+                                <h1>{{ product.name }}</h1>
+                                <h4> PHP{{ product.price }}</h4>
+                                <form method="post" action="{% url 'transaction' %}">
+                                        {% csrf_token %}
+                                    <button type="submit" class="purchase-btn">ADD TO CART</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/shirt.png" class="card-img2">
-                    <div class="product-body">
-                        <h1>SALAD T-SHIRT</h1>
-                        <h4>PHP 149.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/tote.png" class="card-img2">
-                    <div class="product-body">
-                        <h1>SALAD TOTE BAG</h1>
-                        <h4>PHP 100.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-12 products-col1">
-                <div class="card" style="border: 2px solid green;">
-                        <img src="/media/product_images/case.png" class="card-img2">
-                    <div class="product-body">
-                        <h1>SALAD CASE</h1>
-                        <h4>PHP 100.00</h4>
-                        <button type="button" class="purchase-btn">PURCHASE</button>
-                    </div>
-                </div>
-            </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 
