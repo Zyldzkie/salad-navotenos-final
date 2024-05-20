@@ -172,3 +172,9 @@ from django.shortcuts import render
 def about(request):
     return render(request, '../templates/about.html')
 
+def developers(request):
+    return render(request, 'developers.html')
+
+def shop(request):
+    return render(request, 'shop.html')
+
