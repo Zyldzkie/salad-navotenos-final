@@ -7,17 +7,50 @@
     <title>My Orders</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <script src="{% static 'js/bootstrap.js' %}"></script>
+
+    <style>
+        .orders-title{
+            color: green;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FCA501;
+            font-size: 52px;
+        }
+
+        .div-ko{
+            background-color: white;
+            border: 2px solid green;
+            text-align: center;
+            padding-bottom: 10px;
+            width: 500px;
+            margin-bottom: 30px;
+        }
+        .pay-btn{
+            padding: 10px;
+            width: 500px;
+            font-size: 20px;
+            color: white;
+            background-color: green;
+        }
+
+.header-ko{
+    font-size: 30px;
+    background-color: green;
+    color: white;
+    padding: 10px;
+}    
+    </style>
 </head>
 <body>
-
+    {% include 'navbar.html' %}
 <div class="container">
-    <h1 class="mt-5 mb-4">My Orders</h1>
+    <h1 class="orders-title text-center mt-5 mb-4">MY ORDERS</h1>
 
     <div class="row">
-        <div class="col-12">
+        <div style="flex-direction: column; align-items: center; margin-bottom: 30px;" class="col-12 d-flex justify-content-center">
             <!-- Posts Container -->
             <div id="postsDisplay"></div>
-            <button onclick="pay()">PAY</button>
+            
+            <button class="pay-btn" onclick="pay()">PAY</button>
         </div>
     </div>
 
@@ -47,12 +80,20 @@
             // Display sorted posts
             posts.forEach(function(post) {
                 var postDiv = document.createElement('div');
+                postDiv.classList.add('div-ko');
                 var nameH1 = document.createElement('h1');
+                nameH1.classList.add('header-ko');
                 var messageH3 = document.createElement('h3');
                 var quantityP = document.createElement('p');
 
+                let intP = parseInt(post.message);
+                
+                let newP = intP * post.quantity;
+
+         
+
                 nameH1.innerText = post.name;
-                messageH3.innerText = post.message;
+                messageH3.innerText = ("₱" + newP);
                 quantityP.innerText = 'Quantity: ' + post.quantity;
 
                 postDiv.appendChild(nameH1);
