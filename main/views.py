@@ -28,7 +28,7 @@ def signin(request):
             return redirect('home') 
         else:
             messages.error(request, 'Invalid username or password. Please try again.')
-    return render(request, 'signin.html')
+    return render(request, 'signinn.html')
 
 
 from .models import MyUser  
@@ -194,6 +194,19 @@ def about(request):
 
 def developers(request):
     return render(request, 'developers.html')
+
+
+def team(request):
+    return render(request, 'team.html')
+
+def contacts(request):
+    return render(request, 'contacts.html')
+
+def join(request):
+    return render(request, 'join.html')
+
+def donate(request):
+    return render(request, 'donate.html')
 
 # def shop(request):
 #     return render(request, 'shop.html')

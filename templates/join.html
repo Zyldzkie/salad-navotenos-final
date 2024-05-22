@@ -1,0 +1,225 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+        <title>
+            Join
+        </title>
+
+        <link rel="stylesheet" href="css/navbar-styles.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/join.css">
+        <link rel="icon" type="image/x-icon" href="/media/product_images/salad-logo.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <script src="https://kit.fontawesome.com/d84bfa7905.js" crossorigin="anonymous"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+
+            @font-face {
+    font-family: 'Formula';
+    src: url('/static/css/FormulaCondensed-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Formula-light';
+    src: url('/static/css/FormulaCondensed-Light.otf') format('opentype');
+}
+  
+div {
+    font-family: 'Formula';
+}
+body{
+    font-family: 'Formula', sans-serif;
+    overflow-x: hidden;
+    background-image: url(/media/product_images/salad-background.png);
+}
+
+
+.cover-photo {
+    width: 100%;
+    height: auto;
+}
+
+.join-section {
+    margin: 0px 60px;
+}
+
+.title-join {
+    font-family: 'Formula';
+    color: green;
+    font-size: 110px;
+    font-weight: 900;
+    margin: 0;
+    text-shadow: 0px 2px 3px gray;
+
+margin-top: 20px;
+}
+
+.subtitle-join {
+    color: #FCA501;
+    font-family: 'Formula';
+    font-size: 50px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.span-form {
+    color: green;
+    text-decoration: underline;
+}
+
+.icon-team-img {
+    width: 40%;
+    transition: transform 0.2s;
+}
+
+.prodname {
+    color: green;
+    font-size: 25px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.borderan {
+    border: 4px solid green;
+    margin-bottom: 40px;
+    overflow: hidden;
+    padding: 10px 0px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.borderan a{
+text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.borderan:hover .icon-team-img{
+    transform: scale(1.1);
+}
+        </style>
+    </head>
+
+    <body>
+        <!--NavBar-->
+{% include 'navbar.html' %}
+
+        <main class="container-fluid p-0">
+            <div class="row">
+                <div class="col">
+                    <img class="cover-photo" src="/media/product_images/cover2.png" alt="Cover Image">
+                </div>
+            </div>
+
+            <div class="join-section">
+
+                <div class="row">
+                    <div class="col text-center" style="font-family: 'Formula';">
+                        <p class="title-join" style="font-family: 'Formula';">SALAD NAVOTEÑOS TEAMS</p>
+                        <p class="subtitle-join" style="font-family: 'Formula';">SEND US A MESSAGE AND ANSWER THE <span class="span-form">FORM</span></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 text-center">
+                        <div class="borderan">
+                            <a href="#">
+                                <img class="icon-team-img" src="/media/product_images/212.png" alt="Production-image">
+                                <p class="prodname">PRODUCTION TEAM</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div class="borderan">
+                            <a href="#">
+                                <img class="icon-team-img" src="/media/product_images/213.png" alt="Production-image">
+                                <p class="prodname">FARM TEAM</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div class="borderan">
+                            <a href="#">
+                                <img class="icon-team-img" src="/media/product_images/214.png" alt="Production-image">
+                                <p class="prodname">DISPATCH TEAM</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 text-center">
+                        <div class="borderan">
+                            <a href="#">
+                                <img class="icon-team-img" src="/media/product_images/215.png" alt="Production-image">
+                                <p class="prodname">SALES TEAM</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 text-center">
+                        <div class="borderan">
+                            <a href="#">
+                                <img class="icon-team-img" src="/media/product_images/216.png" alt="Production-image">
+                                <p class="prodname">MULTIMEDIA TEAM</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 text-center">
+                        <div class="borderan">
+                            <a href="#">
+                                <img class="icon-team-img" src="/media/product_images/217.png" alt="Production-image">
+                                <p class="prodname">FINANCE TEAM</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 text-center">
+                        <div class="borderan">
+                            <a href="#">
+                                <img class="icon-team-img" src="/media/product_images/218.png" alt="Production-image">
+                                <p class="prodname">ADMIN TEAM</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+
+        <section class="contact-area" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <div class="contact-content text-center">
+                            <a href="index.html"><img src="/media/product_images/Logo-with-text-edited.png" alt="logo"></a>
+                            <p>A scout-led fundraising project and business in support of Navoteño families.</p>
+                            <div class="hr"></div>
+                            <h6>Brgy. San Roque, Navotas City, 1485</h6>
+                            <h6>+63 999 429 7534<span></h6>
+                            <div class="contact-social">
+                                <ul>
+                                    <li><a class="hover-target" href="https://www.facebook.com/SALAD.Navotenos"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a class="hover-target" href="https://www.facebook.com/SALAD.Navotenos"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a class="hover-target" href="https://www.facebook.com/SALAD.Navotenos"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a class="hover-target" href="https://www.facebook.com/SALAD.Navotenos"><i class="fab fa-youtube"></i></a></li>
+                                    <li><a class="hover-target" href="https://www.facebook.com/SALAD.Navotenos"><i class="fab fa-google"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>SALAD Navoteños &copy; 2024 <img src="/media/product_images/salad-logo.png" alt="logo"> All Rights Reserved.</p>
+        </footer>
+    </body>
+
+</html>

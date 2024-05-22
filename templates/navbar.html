@@ -173,13 +173,13 @@ footer img {
                         <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="about.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="{% url 'about' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             About
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'about' %}">About Us</a></li>
-                            <li><a class="dropdown-item" href="/templates/team.html">Team</a></li>
-                            <li><a class="dropdown-item" href="contacts.html">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="{% url 'team' %}">Team</a></li>
+                            <li><a class="dropdown-item" href="{% url 'contacts' %}">Contact Us</a></li>
                             <li><a class="dropdown-item" href="{% url 'developers' %}">Developers</a></li>
                         </ul>
                     </li>
@@ -190,22 +190,21 @@ footer img {
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'shop' %}">Salads</a></li>
-                            <li><a class="dropdown-item" href="#">Chips</a></li>
-                            <li><a class="dropdown-item" href="#">Beverages</a></li>
-                            <li><a class="dropdown-item" href="#">Merchandise</a></li>
+                            <li><a class="dropdown-item" href="{% url 'shop' %}#chips-section">Chips</a></li>
+                            <li><a class="dropdown-item" href="{% url 'shop' %}#shake-section">Beverages</a></li>
+                            <li><a class="dropdown-item" href="{% url 'shop' %}#merch-section">Merchandise</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="news.html">News</a>
+                        <a class="nav-link" id="test" aria-current="page" href="{% url 'create_product' %}">Create</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'orders' %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                    </li>
+
                 </ul>
             </div>
         </div>
