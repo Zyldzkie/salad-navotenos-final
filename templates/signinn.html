@@ -1,594 +1,663 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>SALAD Navoteños</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/css/sign-in.css'>
-    <link rel="icon" type="image/x-icon" href="/images/salad-logo.png">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>SALAD Navoteños</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='/css/sign-in.css'>
+  <link rel="icon" type="image/x-icon" href="/images/salad-logo.png">
 
-    <style>
-        :root{
-  --form-height:550px;
-  --form-width: 900px;
-  /*  Sea Green */
-  --left-color: Green;
-  /*  Light Blue  */
-  --right-color: rgb(2, 90, 2);
-}
+  <style>
+    :root {
+      --form-height: 550px;
+      --form-width: 900px;
+      /*  Sea Green */
+      --left-color: Green;
+      /*  Light Blue  */
+      --right-color: rgb(2, 90, 2);
+    }
 
-body, html{
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  font-family: 'Helvetica Neue', sans-serif;
-  letter-spacing: 0.5px;
-}
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      letter-spacing: 0.5px;
+    }
 
-.container{
-  width: var(--form-width);
-  height: var(--form-height);
-  position: relative;
-  margin: auto;
-  box-shadow: 2px 10px 40px rgba(22,20,19,0.4);
-  border-radius: 10px;
-  margin-top: 50px;
-}
-/* 
+    .container {
+      width: var(--form-width);
+      height: var(--form-height);
+      position: relative;
+      margin: auto;
+      box-shadow: 2px 10px 40px rgba(22, 20, 19, 0.4);
+      border-radius: 10px;
+      margin-top: 50px;
+    }
+
+    /* 
 ----------------------
       Overlay
 ----------------------
 */
-.overlay{
-  width: 100%; 
-  height: 100%;
-  position: absolute;
-  z-index: 100;
-  background-image: linear-gradient(to right, var(--left-color), var(--right-color));
-  border-radius: 10px;
-  color: white;
-  clip: rect(0, 385px, var(--form-height), 0);
-}
+    .overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 100;
+      background-image: linear-gradient(to right, var(--left-color), var(--right-color));
+      border-radius: 10px;
+      color: white;
+      clip: rect(0, 385px, var(--form-height), 0);
+    }
 
-.open-sign-up{
-    animation: slideleft 1s linear forwards;
-}
+    .open-sign-up {
+      animation: slideleft 1s linear forwards;
+    }
 
-.open-sign-in{
-    animation: slideright 1s linear forwards;
-}
+    .open-sign-in {
+      animation: slideright 1s linear forwards;
+    }
 
-.overlay .sign-in, .overlay .sign-up{
-  /*  Width is 385px - padding  */
-  --padding: 50px;
-  width: calc(385px - var(--padding) * 2);
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px var(--padding);
-  text-align: center;
-}
+    .overlay .sign-in,
+    .overlay .sign-up {
+      /*  Width is 385px - padding  */
+      --padding: 50px;
+      width: calc(385px - var(--padding) * 2);
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      padding: 0px var(--padding);
+      text-align: center;
+    }
 
-.overlay .sign-in{
-  float: left;
-}
+    .overlay .sign-in {
+      float: left;
+    }
 
-.overlay-text-left-animation{
-    animation: text-slide-in-left 1s linear;
-}
-.overlay-text-left-animation-out{
-    animation: text-slide-out-left 1s linear;
-}
+    .overlay-text-left-animation {
+      animation: text-slide-in-left 1s linear;
+    }
 
-.overlay .sign-up{
-  float:right;
-}
+    .overlay-text-left-animation-out {
+      animation: text-slide-out-left 1s linear;
+    }
 
-.overlay-text-right-animation{
-    animation: text-slide-in-right 1s linear;
-}
+    .overlay .sign-up {
+      float: right;
+    }
 
-.overlay-text-right-animation-out{
-    animation: text-slide-out-right 1s linear;
-}
+    .overlay-text-right-animation {
+      animation: text-slide-in-right 1s linear;
+    }
+
+    .overlay-text-right-animation-out {
+      animation: text-slide-out-right 1s linear;
+    }
 
 
-.overlay h1{
-  margin: 0px 5px;
-  font-size: 2.1rem;
-}
+    .overlay h1 {
+      margin: 0px 5px;
+      font-size: 2.1rem;
+    }
 
-.overlay p{
-  margin: 20px 0px 30px;
-  font-weight: 200;
-}
-/* 
+    .overlay p {
+      margin: 20px 0px 30px;
+      font-weight: 200;
+    }
+
+    /* 
 ------------------------
       Buttons
 ------------------------
 */
-.switch-button, .control-button{
-  cursor: pointer;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 140px;
-  height: 40px;
-  font-size: 14px;
-  text-transform: uppercase;
-  background: none;
-  border-radius: 20px;
-  color: white;
-}
+    .switch-button,
+    .control-button {
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 140px;
+      height: 40px;
+      font-size: 14px;
+      text-transform: uppercase;
+      background: none;
+      border-radius: 20px;
+      color: white;
+    }
 
 
-.switch-button{
-  border: 2px solid;
-}
+    .switch-button {
+      border: 2px solid;
+    }
 
-.control-button{
-  border: none;
-  margin-top: 15px;
-}
+    .control-button {
+      border: none;
+      margin-top: 15px;
+    }
 
-.switch-button:focus, .control-button:focus{
-  outline:none;
-}
+    .switch-button:focus,
+    .control-button:focus {
+      outline: none;
+    }
 
-.control-button.up{
-  background-color: var(--left-color);
-}
+    .control-button.up {
+      background-color: var(--left-color);
+    }
 
-.control-button.in{
-  background-color: var(--right-color);
-}
+    .control-button.in {
+      background-color: var(--right-color);
+    }
 
-/* 
+    /* 
 --------------------------
       Forms
 --------------------------
 */
-.form{
-  width: 100%; 
-  height: 100%;
-  position: absolute;
-  border-radius: 10px;
-}
+    .form {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      border-radius: 10px;
+    }
 
-.form .sign-in, .form .sign-up{
-  --padding: 50px;
-  position:absolute;
-    /*  Width is 100% - 385px - padding  */
-  width: calc(var(--form-width) - 385px - var(--padding) * 2);
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px var(--padding);
-  text-align: center;
-}
+    .form .sign-in,
+    .form .sign-up {
+      --padding: 50px;
+      position: absolute;
+      /*  Width is 100% - 385px - padding  */
+      width: calc(var(--form-width) - 385px - var(--padding) * 2);
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      padding: 0px var(--padding);
+      text-align: center;
+    }
 
-/* Sign in is initially not displayed */
-.form .sign-in{
-  display: none;
-}
+    /* Sign in is initially not displayed */
+    .form .sign-in {
+      display: none;
+    }
 
-.form .sign-in{
-  left:0;
-}
+    .form .sign-in {
+      left: 0;
+    }
 
-.form .sign-up{
-  right: 0;
-}
+    .form .sign-up {
+      right: 0;
+    }
 
-.form-right-slide-in{
-  animation: form-slide-in-right 1s;
-}
+    .form-right-slide-in {
+      animation: form-slide-in-right 1s;
+    }
 
-.form-right-slide-out{
-  animation: form-slide-out-right 1s;
-}
+    .form-right-slide-out {
+      animation: form-slide-out-right 1s;
+    }
 
-.form-left-slide-in{
-  animation: form-slide-in-left 1s;
-}
+    .form-left-slide-in {
+      animation: form-slide-in-left 1s;
+    }
 
-.form-left-slide-out{
-  animation: form-slide-out-left 1s;
-}
+    .form-left-slide-out {
+      animation: form-slide-out-left 1s;
+    }
 
-.form .sign-in h1{
-  color: var(--right-color);
-  margin: 0;
-}
+    .form .sign-in h1 {
+      color: var(--right-color);
+      margin: 0;
+    }
 
-.form .sign-up h1{
-  color: var(--left-color);
-  margin: 0;
-}
+    .form .sign-up h1 {
+      color: var(--left-color);
+      margin: 0;
+    }
 
-.social-media-buttons{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 15px;
-}
+    .social-media-buttons {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 15px;
+    }
 
-.social-media-buttons .icon{
-  width: 40px;
-  height: 40px;
-  border: 1px solid #dadada;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 7px;
-}
+    .social-media-buttons .icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #dadada;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 7px;
+    }
 
-.small{
-  font-size: 13px;
-  color: grey;
-  font-weight: 200;
-  margin: 5px;
-}
+    .small {
+      font-size: 13px;
+      color: grey;
+      font-weight: 200;
+      margin: 5px;
+    }
 
-.social-media-buttons .icon svg{
-  width: 25px;
-  height: 25px;
-}
+    .social-media-buttons .icon svg {
+      width: 25px;
+      height: 25px;
+    }
 
-#sign-in-form input, #sign-up-form input{
-  margin: 12px;
-  font-size: 14px;
-  padding: 15px;
-  width: 260px;
-  font-weight: 300;
-  border: none;
-  background-color: #e4e4e494;
-  font-family: 'Helvetica Neue', sans-serif;
-  letter-spacing: 1.5px;
-  padding-left: 20px;
-}
+    #sign-in-form input,
+    #sign-up-form input {
+      margin: 12px;
+      font-size: 14px;
+      padding: 15px;
+      width: 260px;
+      font-weight: 300;
+      border: none;
+      background-color: #e4e4e494;
+      font-family: 'Helvetica Neue', sans-serif;
+      letter-spacing: 1.5px;
+      padding-left: 20px;
+    }
 
-#sign-in-form input::placeholder{
-  letter-spacing: 1px;
-}
+    #sign-in-form input::placeholder {
+      letter-spacing: 1px;
+    }
 
-.forgot-password{
-  font-size: 12px;
-  display: inline-block;
-  border-bottom: 2px solid #efebeb;
-  padding-bottom: 3px;
-}
+    .forgot-password {
+      font-size: 12px;
+      display: inline-block;
+      border-bottom: 2px solid #efebeb;
+      padding-bottom: 3px;
+    }
 
-.forgot-password:hover{
-  cursor: pointer;
-  color: green;
-}
+    .forgot-password:hover {
+      cursor: pointer;
+      color: green;
+    }
 
 
-/* 
+    /* 
 ---------------------------
     Animation
 ---------------------------
 */
-@keyframes slideright{
-  0%{
-    clip: rect(0, 385px, var(--form-height), 0);
-  }
-  30%{
+    @keyframes slideright {
+      0% {
+        clip: rect(0, 385px, var(--form-height), 0);
+      }
+
+      30% {
         clip: rect(0, 480px, var(--form-height), 0);
-  }
-  /*  we want the width to be slightly larger here  */
-  50%{
-     clip: rect(0px, calc(var(--form-width) / 2 + 480px / 2), var(--form-height), calc(var(--form-width) / 2 - 480px / 2));
-  }
-  80%{
-         clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 480px));
-  }
-  100%{
-     clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 385px));
-  }
-}
+      }
 
-@keyframes slideleft{
-  100%{
-    clip: rect(0, 385px, var(--form-height), 0);
-  }
-  70%{
+      /*  we want the width to be slightly larger here  */
+      50% {
+        clip: rect(0px, calc(var(--form-width) / 2 + 480px / 2), var(--form-height), calc(var(--form-width) / 2 - 480px / 2));
+      }
+
+      80% {
+        clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 480px));
+      }
+
+      100% {
+        clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 385px));
+      }
+    }
+
+    @keyframes slideleft {
+      100% {
+        clip: rect(0, 385px, var(--form-height), 0);
+      }
+
+      70% {
         clip: rect(0, 480px, var(--form-height), 0);
-  }
-  /*  we want the width to be slightly larger here  */
-  50%{
-     clip: rect(0px, calc(var(--form-width) / 2 + 480px / 2), var(--form-height), calc(var(--form-width) / 2 - 480px / 2));
-  }
-  30%{
-         clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 480px));
-  }
-  0%{
-     clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 385px));
-  }
-}
+      }
 
-@keyframes text-slide-in-left{
-  0% {
-    padding-left: 20px;
-  }
-  100% {
-    padding-left: 50px;
-  }
-}
+      /*  we want the width to be slightly larger here  */
+      50% {
+        clip: rect(0px, calc(var(--form-width) / 2 + 480px / 2), var(--form-height), calc(var(--form-width) / 2 - 480px / 2));
+      }
 
-@keyframes text-slide-in-right{
-  0% {
-    padding-right: 20px;
-  }
-  100% {
-    padding-right: 50px;
-  }
-}
+      30% {
+        clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 480px));
+      }
 
-@keyframes text-slide-out-left{
-  0% {
-    padding-left: 50px;
-  }
-  100% {
-    padding-left: 20px;
-  }
-}
+      0% {
+        clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 385px));
+      }
+    }
 
-@keyframes text-slide-out-right{
-  0% {
-    padding-right: 50px;
-  }
-  100% {
-    padding-right: 20px;
-  }
-}
+    @keyframes text-slide-in-left {
+      0% {
+        padding-left: 20px;
+      }
 
-@keyframes form-slide-in-right{
-  0%{
-    padding-right: 100px;
-  }
-  100%{
-    padding-right: 50px;
-  }
-}
+      100% {
+        padding-left: 50px;
+      }
+    }
 
-@keyframes form-slide-in-left{
-  0%{
-    padding-left: 100px;
-  }
-  100%{
-    padding-left: 50px;
-  }
-}
+    @keyframes text-slide-in-right {
+      0% {
+        padding-right: 20px;
+      }
 
-@keyframes form-slide-out-right{
-  0%{
-    padding-right: 50px;
-  }
-  100%{
-    padding-right: 80px;
-  }
-}
+      100% {
+        padding-right: 50px;
+      }
+    }
 
-@keyframes form-slide-out-left{
-  0%{
-    padding-left: 50px;
-  }
-  100%{
-    padding-left: 80px;
-  }
-}
+    @keyframes text-slide-out-left {
+      0% {
+        padding-left: 50px;
+      }
 
-@media (max-width: 768px) {
-  :root {
-      --form-width: 100%;
-      --form-height: auto;
-  }
-  
-  .container {
-      width: 100%;
-      margin-top: 20px;
-  }
+      100% {
+        padding-left: 20px;
+      }
+    }
 
-  .overlay {
-      clip: auto;
-      position: static;
-  }
+    @keyframes text-slide-out-right {
+      0% {
+        padding-right: 50px;
+      }
 
-  .overlay .sign-in, .overlay .sign-up {
-      width: 100%;
-      padding: 20px;
-  }
+      100% {
+        padding-right: 20px;
+      }
+    }
 
-  .form .sign-in, .form .sign-up {
-      width: 100%;
-      padding: 20px;
-  }
+    @keyframes form-slide-in-right {
+      0% {
+        padding-right: 100px;
+      }
 
-  .form .sign-in, .form .sign-up {
-      position: static;
-  }
+      100% {
+        padding-right: 50px;
+      }
+    }
 
-  .form {
-      display: flex;
-      flex-direction: column;
-  }
-}
-    </style>
+    @keyframes form-slide-in-left {
+      0% {
+        padding-left: 100px;
+      }
+
+      100% {
+        padding-left: 50px;
+      }
+    }
+
+    @keyframes form-slide-out-right {
+      0% {
+        padding-right: 50px;
+      }
+
+      100% {
+        padding-right: 80px;
+      }
+    }
+
+    @keyframes form-slide-out-left {
+      0% {
+        padding-left: 50px;
+      }
+
+      100% {
+        padding-left: 80px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --form-width: 100%;
+        --form-height: auto;
+      }
+
+      .container {
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .overlay {
+        clip: auto;
+        position: static;
+      }
+
+      .overlay .sign-in,
+      .overlay .sign-up {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .form .sign-in,
+      .form .sign-up {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .form .sign-in,
+      .form .sign-up {
+        position: static;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container" style="background-image: url(/images/salad-background.png);">
-      <div class="overlay" id="overlay">
-        <div class="sign-in" id="sign-in">
-          <img src="/media/product_images/Logo-with-text-edited.png" style="height: auto; width: 250px; margin-bottom: 20px;">
-          <h1>Welcome Back!</h1>
-          <p>To keep connected with us please login with your personal info</p>
-          <button class="switch-button" id="slide-right-button">Sign In</button>
-        </div>
-        <div class="sign-up" id="sign-up">
-          <img src="/media/product_images/Logo-with-text-edited.png" style="height: auto; width: 250px; margin-bottom: 20px;">
-          <h1>Hello!</h1>
-          <p>Enter your personal details and start a journey with us</p>
-          <button class="switch-button" id="slide-left-button">Sign Up</button>
-        </div>
+  <div class="container" style="background-image: url(/images/salad-background.png);">
+    <div class="overlay" id="overlay">
+      <div class="sign-in" id="sign-in">
+        <img src="/media/product_images/Logo-with-text-edited.png"
+          style="height: auto; width: 250px; margin-bottom: 20px;">
+        <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="switch-button" id="slide-right-button">Sign In</button>
       </div>
-      <div class="form">
-        <div class="sign-in" id="sign-in-info">
-          <h1>Sign In</h1>
-          <form id="sign-in-form">      
-            <input type="email" id="signin-email" placeholder="Email" required/>
-            <input type="password" id="signin-password" placeholder="Password" required/>
-            <p class="forgot-password">Forgot your password?</p>
-            <button type="button" class="control-button in" onclick="signIn()">Sign In</button>
-          </form>
-        </div>
-        <div class="sign-up" id="sign-up-info">
-          <h1>Create Account</h1>
-          <form id="sign-up-form">
-            <input type="text" id="signup-name" placeholder="Name" required/>
-            <input type="email" id="signup-email" placeholder="Email" required/>
-            <input type="password" id="signup-password" placeholder="Password" required/>
-            <button type="button" class="control-button up" onclick="signUp()">Sign Up</button>
-          </form>
-        </div>
+      <div class="sign-up" id="sign-up">
+        <img src="/media/product_images/Logo-with-text-edited.png"
+          style="height: auto; width: 250px; margin-bottom: 20px;">
+        <h1>Hello!</h1>
+        <p>Enter your personal details and start a journey with us</p>
+        <button class="switch-button" id="slide-left-button">Sign Up</button>
       </div>
     </div>
-    <script>
-      var overlay = document.getElementById("overlay");
-  
-      // Buttons to 'switch' the page
-      var openSignUpButton = document.getElementById("slide-left-button");
-      var openSignInButton = document.getElementById("slide-right-button");
-  
-      // The sidebars
-      var leftText = document.getElementById("sign-in");
-      var rightText = document.getElementById("sign-up");
-  
-      // The forms
-      var accountForm = document.getElementById("sign-in-info");
-      var signinForm = document.getElementById("sign-up-info");
-  
-      // Open the Sign Up page
-      function openSignUp() {
-        leftText.classList.remove("overlay-text-left-animation-out");
-        overlay.classList.remove("open-sign-in");
-        rightText.classList.remove("overlay-text-right-animation");
-        accountForm.className += " form-left-slide-out";
-        rightText.className += " overlay-text-right-animation-out";
-        overlay.className += " open-sign-up";
-        leftText.className += " overlay-text-left-animation";
-        setTimeout(function(){
-          accountForm.classList.remove("form-left-slide-in");
-          accountForm.style.display = "none";
-          accountForm.classList.remove("form-left-slide-out");
-        }, 700);
-        setTimeout(function(){
-          signinForm.style.display = "flex";
-          signinForm.classList += " form-right-slide-in";
-        }, 200);
+    <div class="form">
+      <div class="sign-in" id="sign-in-info">
+        <h1>Sign In</h1>
+        <form id="sign-in-form">
+          <input type="email" id="signin-email" placeholder="Email" required />
+          <input type="password" id="signin-password" placeholder="Password" required />
+          <p class="forgot-password" onclick="forgotPassword()">Forgot your password?</p>
+          <button type="button" class="control-button in" onclick="signIn()">Sign In</button>
+        </form>
+      </div>
+      <div class="sign-up" id="sign-up-info">
+        <h1>Create Account</h1>
+        <form id="sign-up-form">
+          <input type="text" id="signup-name" placeholder="Name" required />
+          <input type="email" id="signup-email" placeholder="Email" required />
+          <input type="password" id="signup-password" placeholder="Password" required />
+          <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required />
+          <button type="button" class="control-button up" onclick="signUp()">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    var overlay = document.getElementById("overlay");
+
+    // Buttons to 'switch' the page
+    var openSignUpButton = document.getElementById("slide-left-button");
+    var openSignInButton = document.getElementById("slide-right-button");
+
+    // The sidebars
+    var leftText = document.getElementById("sign-in");
+    var rightText = document.getElementById("sign-up");
+
+    // The forms
+    var accountForm = document.getElementById("sign-in-info");
+    var signinForm = document.getElementById("sign-up-info");
+
+    // Open the Sign Up page
+    function openSignUp() {
+      leftText.classList.remove("overlay-text-left-animation-out");
+      overlay.classList.remove("open-sign-in");
+      rightText.classList.remove("overlay-text-right-animation");
+      accountForm.className += " form-left-slide-out";
+      rightText.className += " overlay-text-right-animation-out";
+      overlay.className += " open-sign-up";
+      leftText.className += " overlay-text-left-animation";
+      setTimeout(function () {
+        accountForm.classList.remove("form-left-slide-in");
+        accountForm.style.display = "none";
+        accountForm.classList.remove("form-left-slide-out");
+      }, 700);
+      setTimeout(function () {
+        signinForm.style.display = "flex";
+        signinForm.classList += " form-right-slide-in";
+      }, 200);
+    }
+
+    // Open the Sign In page
+    function openSignIn() {
+      leftText.classList.remove("overlay-text-left-animation");
+      overlay.classList.remove("open-sign-up");
+      rightText.classList.remove("overlay-text-right-animation-out");
+      signinForm.classList += " form-right-slide-out";
+      leftText.className += " overlay-text-left-animation-out";
+      overlay.className += " open-sign-in";
+      rightText.className += " overlay-text-right-animation";
+      setTimeout(function () {
+        signinForm.classList.remove("form-right-slide-in");
+        signinForm.style.display = "none";
+        signinForm.classList.remove("form-right-slide-out");
+      }, 700);
+      setTimeout(function () {
+        accountForm.style.display = "flex";
+        accountForm.classList += " form-left-slide-in";
+      }, 200);
+    }
+
+    // When a 'switch' button is pressed, switch page
+    openSignUpButton.addEventListener("click", openSignUp, false);
+    openSignInButton.addEventListener("click", openSignIn, false);
+
+    // Email validation function
+    function validateEmail(email) {
+      var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(String(email).toLowerCase());
+    }
+
+    // Password validation function (minimum 6 characters for this example)
+    function validatePassword(password) {
+      return password.length >= 6;
+    }
+
+    // Sign Up function
+    function signUp() {
+      var name = document.getElementById("signup-name").value;
+      var email = document.getElementById("signup-email").value;
+      var password = document.getElementById("signup-password").value;
+      var confirmPassword = document.getElementById("signup-confirm-password").value;
+
+      if (!name || !email || !password || !confirmPassword) {
+        alert("Please fill all fields");
+        return;
       }
-  
-      // Open the Sign In page
-      function openSignIn() {
-        leftText.classList.remove("overlay-text-left-animation");
-        overlay.classList.remove("open-sign-up");
-        rightText.classList.remove("overlay-text-right-animation-out");
-        signinForm.classList += " form-right-slide-out";
-        leftText.className += " overlay-text-left-animation-out";
-        overlay.className += " open-sign-in";
-        rightText.className += " overlay-text-right-animation";
-        setTimeout(function(){
-          signinForm.classList.remove("form-right-slide-in");
-          signinForm.style.display = "none";
-          signinForm.classList.remove("form-right-slide-out");
-        }, 700);
-        setTimeout(function(){
-          accountForm.style.display = "flex";
-          accountForm.classList += " form-left-slide-in";
-        }, 200);
+
+      if (!validateEmail(email)) {
+        alert("Please enter a valid email address");
+        return;
       }
-  
-      // When a 'switch' button is pressed, switch page
-      openSignUpButton.addEventListener("click", openSignUp, false);
-      openSignInButton.addEventListener("click", openSignIn, false);
-  
-      // Email validation function
-      function validateEmail(email) {
-        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(String(email).toLowerCase());
+
+      if (!validatePassword(password)) {
+        alert("Password must be at least 6 characters long");
+        return;
       }
-  
-      // Password validation function (minimum 6 characters for this example)
-      function validatePassword(password) {
-        return password.length >= 6;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
       }
-  
-      // Sign Up function
-      function signUp() {
-        var name = document.getElementById("signup-name").value;
-        var email = document.getElementById("signup-email").value;
-        var password = document.getElementById("signup-password").value;
-  
-        if (!name || !email || !password) {
-          alert("Please fill all fields");
-          return;
-        }
-  
-        if (!validateEmail(email)) {
-          alert("Please enter a valid email address");
-          return;
-        }
-  
-        if (!validatePassword(password)) {
-          alert("Password must be at least 6 characters long");
-          return;
-        }
-  
-        var users = JSON.parse(localStorage.getItem("users")) || [];
-        var userExists = users.some(user => user.email === email);
-  
-        if (userExists) {
-          alert("User already exists!");
-        } else {
-          users.push({ name: name, email: email, password: password });
-          localStorage.setItem("users", JSON.stringify(users));
-          alert("User registered successfully!");
-          openSignIn();
-        }
+
+      var users = JSON.parse(localStorage.getItem("users")) || [];
+      var userExists = users.some(user => user.email === email);
+
+      if (userExists) {
+        alert("User already exists!");
+      } else {
+        users.push({ name: name, email: email, password: password });
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("User registered successfully!");
+        openSignIn();
       }
-  
-      // Sign In function
-      function signIn() {
-        var email = document.getElementById("signin-email").value;
-        var password = document.getElementById("signin-password").value;
-  
-        if (!email || !password) {
-          alert("Please fill all fields");
-          return;
-        }
-  
-        if (!validateEmail(email)) {
-          alert("Please enter a valid email address");
-          return;
-        }
-  
-        var users = JSON.parse(localStorage.getItem("users")) || [];
-        var user = users.find(user => user.email === email && user.password === password);
-  
-        if (user) {
-          alert("Sign in successful!");
-          window.location.href = "{% url 'home' %}"; // Use Django URL template tag
-        } else {
-          alert("Invalid email or password!");
-        }
+    }
+
+
+    // Sign In function
+    function signIn() {
+      var email = document.getElementById("signin-email").value;
+      var password = document.getElementById("signin-password").value;
+
+      if (!email || !password) {
+        alert("Please fill all fields");
+        return;
       }
-    </script>
-  </body>
+
+      if (!validateEmail(email)) {
+        alert("Please enter a valid email address");
+        return;
+      }
+
+      var users = JSON.parse(localStorage.getItem("users")) || [];
+      var user = users.find(user => user.email === email && user.password === password);
+
+      if (user) {
+        alert("Sign in successful!");
+        window.location.href = "{% url 'home' %}"; // Use Django URL template tag
+      } else {
+        alert("Invalid email or password!");
+      }
+    }
+
+    function forgotPassword() {
+      var email = prompt("Please enter your email address:");
+
+      if (!email) {
+        alert("Email address is required to reset password.");
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      var users = JSON.parse(localStorage.getItem("users")) || [];
+      var user = users.find(user => user.email === email);
+
+      if (!user) {
+        alert("No user found with that email address.");
+        return;
+      }
+
+      // Typically, you would send a password reset link or code to the user's email.
+      // For demonstration purposes, we'll just alert that a reset link would be sent.
+
+      alert("Password reset link would be sent to " + email);
+    }
+
+  </script>
+</body>
+
 </html>

@@ -1133,7 +1133,7 @@ ul{
     </div>
 
     <div class="container-fluid" style="margin-top: 40px;">
-        <div id="salads-section" class="products-header">
+        <div class="products-header">
             <h1 class="text-center">SIGNATURE SALAD CREATIONS</h1>
             <h2 class="text-center"><span class="yellow-text">DISCOVER OUR SPECIALTIES</span></h2>
         </div>
@@ -1148,21 +1148,21 @@ ul{
                                 <ul class="ingredient-list">
                                     <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
                                     <li><pre>{{ product.description }}</pre></li>
-                        </ul>
-                    </div>
-                    <div class="product-body">
-                        <h1>{{ product.name }}</h1>
+                                </ul>
+                            </div>
+                            <div class="product-body">
+                                <h1>{{ product.name }}</h1>
                                 <h4> PHP{{ product.price }}</h4>
                                 <form method="post" action="{% url 'transaction' %}">
                                         {% csrf_token %}
                                     <button type="button" class="purchase-btn" onclick="savePost('{{ product.name }}', '{{ product.price }}')">ADD TO CART</button>
                                 </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
-        </div>            
+        </div>
     </div>
 
     <div class="container-fluid">
@@ -1259,7 +1259,7 @@ ul{
         </div>
     </div>
 
-    <div id="chips-section" class="container-fluid">
+    <div class="container-fluid">
         <div class="products-header">
             <h1 class="text-center">CRUNCHY LETTUCE CHIPS</h1>
             <h2 class="text-center"><span class="yellow-text">DELIVERING DELIGHTFUL CRISP IN EVERY BITE!</span></h2>
@@ -1277,24 +1277,24 @@ ul{
                                         <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
                                         <li><pre>{{ product.description }}</pre></li>
                                     </ul>
-                    </div>
-                    <div class="product-body">
-                        <h1>{{ product.name }}</h1>
+                                </div>
+                                <div class="product-body">
+                                    <h1>{{ product.name }}</h1>
                                     <h4> PHP{{ product.price }}</h4>
                                     <form method="post" action="{% url 'transaction' %}">
                                             {% csrf_token %}
                                         <button type="submit" class="purchase-btn">ADD TO CART</button>
                                     </form>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-            {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
 
-    <div id="shake-section" class="container-fluid">
+    <div class="container-fluid">
         <div class="products-header">
             <h1 class="text-center">HEALTHY FRUIT SHAKE</h1>
             <h2 class="text-center"><span class="yellow-text">SIP ON REFRESHING FRUIT SHAKES!</span></h2>
@@ -1311,24 +1311,24 @@ ul{
                                     <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
                                     <li><pre>{{ product.description }}</pre></li>
                                 </ul>
-                    </div>
-                    <div class="product-body">
-                        <h1>{{ product.name }}</h1>
+                            </div>
+                            <div class="product-body">
+                                <h1>{{ product.name }}</h1>
                                 <h4> PHP{{ product.price }}</h4>
                                 <form method="post" action="{% url 'transaction' %}">
                                         {% csrf_token %}
                                     <button type="submit" class="purchase-btn">ADD TO CART</button>
                                 </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
-                </div>
-            </div>
+        </div>
+    </div>
 
-    
-    <div id="merch-section" class="container-fluid">
+
+    <div class="container-fluid">
         <div class="products-header">
             <h1 class="text-center">FLEX YOUR FRESHNESS</h1>
             <h2 class="text-center"><span class="yellow-text">EXCLUSIVE SALAD NAVOTEÑOS MERCHANDISE COLLECTION!</span></h2>
@@ -1345,18 +1345,18 @@ ul{
                                     <li style="color: green; letter-spacing: 1px; border-bottom: 2px solid #FCA501; margin-bottom: 10px;">INGREDIENTS:</li>
                                     <li><pre>{{ product.description }}</pre></li>
                                 </ul>
-                    </div>
-                    <div class="product-body">
-                        <h1>{{ product.name }}</h1>
+                            </div>
+                            <div class="product-body">
+                                <h1>{{ product.name }}</h1>
                                 <h4> PHP{{ product.price }}</h4>
                                 <form method="post" action="{% url 'transaction' %}">
                                         {% csrf_token %}
                                     <button type="submit" class="purchase-btn">ADD TO CART</button>
                                 </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
         </div>
     </div>
@@ -1394,6 +1394,7 @@ ul{
     <footer>
         <p>SALAD Navoteños &copy; 2024 <img src="/media/product_images/salad-logo.png" alt="logo"> All Rights Reserved.</p>
     </footer>
+
     <script>
         function savePost(name, message) {
             if (!name || !message) {
@@ -1424,6 +1425,9 @@ ul{
 
         }
     </script>
+
+    
+
 </body>
 
 </html>
